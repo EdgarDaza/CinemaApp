@@ -1,3 +1,14 @@
 <ion-app>
+  <app-header 
+  *ngIf="showHeader"
+  ></app-header>
+
   <ion-router-outlet></ion-router-outlet>
+  <app-footer 
+  *ngIf="showFooter"
+  ></app-footer>
+
+  <!-- <app-header></app-header>
+  <ion-router-outlet></ion-router-outlet>
+  <app-footer></app-footer> -->
 </ion-app>

@@ -1,0 +1,17 @@
+ion-tab-bar {
+  --background: #0B101A; 
+  // border-top-left-radius: 20px; /* more rounded corners */
+  // border-top-right-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* soft shadow for a floating effect */
+}
+
+ion-tab-button {
+  --color: #8e8e93;
+  --color-selected: #007aff; /* typical iOS blue for selected items */
+}
+
+ion-icon {
+  font-size: 1.5rem; /* slightly larger for better visibility */
+}

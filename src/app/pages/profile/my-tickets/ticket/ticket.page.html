@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Ticket Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Ticket Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div *ngIf="ticketDetails; else loading">
+    <p>ID del Ticket: {{ ticketDetails.idTicket }}</p>
+    <p>Título de la película: {{ ticketDetails.showtimeHour.showtime.movie.title }}</p>
+    <!-- Muestra más detalles del ticket aquí -->
+  </div>
+
+  <ng-template #loading>
+    <p>Cargando detalles del ticket...</p>
+  </ng-template>
+</ion-content>

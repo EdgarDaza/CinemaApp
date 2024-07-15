@@ -1,0 +1,30 @@
+:host {
+  ion-toolbar {
+    --background: #0B101A;
+    color: #F1F1F1;
+  }
+  
+  ion-content {
+    --background: #0B101A;
+    color: #0B101A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .minimalist-container {
+      padding-top: 130px;
+      text-align: center;
+      h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 1.2em;
+        color: #666;
+        display: flex;
+    justify-content: center;
+      }
+    }
+  }
+}

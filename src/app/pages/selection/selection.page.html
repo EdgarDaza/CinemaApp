@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button
+      (click)="navigateBack()">
+        <ion-icon
+        name="arrow-back-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectedDay" (ionChange)="onDaySelected($event)">
+    <ion-segment-button *ngFor="let showtime of showtimes" [value]="showtime.showtimeDate">
+      <ion-label>{{ showtime.showtimeDate | longDate }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="selectedDay">
+    <ion-segment [(ngModel)]="selectedTime" (ionChange)="onTimeSelected($event)">
+      <ion-segment-button *ngFor="let showtimeHour of getShowtimeHoursForDay(selectedDay)" [value]="showtimeHour.showtimeHour">
+        <ion-label>{{ showtimeHour.showtimeHour | formatTime }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <ion-button (click)="goToSelectSeats(selectedTime)" [disabled]="!selectedTime">SELECT SEATS</ion-button>
+</ion-content>
+
+
+
+<!--
+<ion-content>
+  <div class="selection-container">
+    <h2>Select Day</h2>
+    <ion-datetime
+      id="selectedDay"
+      display-format="DDDD MMM DD"
+      picker-format="MMMM DD"
+      min="2023-05-01"
+      max="2023-05-05"
+      [(ngModel)]="selectedDay"
+    ></ion-datetime>
+
+    <h2>Select Time</h2>
+    <div class="time-selection">
+      <ion-button
+        *ngFor="let time of ['2:00 pm', '5:30 pm', '9:00 pm']"
+        expand="block"
+        [color]="selectedTime === time ? 'secondary' : 'light'"
+        (click)="selectTime(time)">
+        {{ time }}
+      </ion-button>
+    </div>
+
+    <h2>Select Quality</h2>
+    <div class="quality-selection">
+      <ion-button expand="block" color="secondary">
+        2D
+      </ion-button>
+    </div>
+
+    <div class="tags">
+      <ion-button
+      fill="outline"
+      size="small"
+      >PG13</ion-button>
+      <ion-button
+      fill="outline"
+      size="small"
+      >Science fiction</ion-button>
+    </div>
+
+    <ion-button
+    expand="block"
+    color="secondary"
+    (click)="goToSeats()"
+    >Booking
+      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content> -->

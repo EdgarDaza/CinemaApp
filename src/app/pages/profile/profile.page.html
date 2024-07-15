@@ -1,0 +1,58 @@
+<!-- <app-header [title]="title"></app-header> -->
+
+<ion-content>
+  <div class="profile-container">
+    <img 
+      src="assets/icon/icon.png" 
+      alt="Profile Icon" 
+      class="profile-icon"/> 
+
+    <h1>Hi User</h1>
+    <h2>Welcome</h2>
+
+    <ion-button 
+      class="profile-button" 
+      (click)="goMyTickets()"
+      color="light">
+      <ion-icon 
+        name="ticket-outline" 
+        slot="start"></ion-icon>
+      My tickets
+    </ion-button>
+<!-- 
+    <ion-button 
+      class="profile-button" 
+      (click)="goMyCreditCards()"
+      color="light">
+      <ion-icon 
+        name="card-outline" 
+        slot="start"></ion-icon>
+      My credit cards
+    </ion-button> -->
+
+    <ion-button 
+      class="profile-button"
+      color="light" 
+      (click)="goTest()">
+      <ion-icon 
+        slot="start"></ion-icon>
+      No tocar
+    </ion-button>
+
+    <a 
+    class="about-link" 
+    (click)="goAboutUs()">
+      About us
+    </a>
+
+    <!-- <ion-button (click)="redirectToPage('/my-tickets')">My Tickets</ion-button>
+    <ion-button (click)="redirectToPage('/profile/test')">Test page</ion-button>
+    <ion-button (click)="redirectToPage('/my-credit-cards')">My Credit Cards</ion-button> -->
+
+  </div>
+</ion-content>
+
+<!-- <ion-content>
+  <ion-button (click)="redirectToPage('/profile/test')">Test page</ion-button>
+  <router-outlet></router-outlet>
+</ion-content> -->

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBack()"> 
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="minimalist-container">
+    <h1>My Tickets</h1>
+    
+    <div *ngIf="noUserData; else ticketList">
+      <p>Haz decidido no guardar tus datos :)</p>
+    </div>
+
+    <ng-template #ticketList>
+      <div *ngIf="data.length > 0; else noTickets">
+        <ion-button 
+          *ngFor="let ticket of data" 
+          expand="full" 
+          class="full-screen-button"
+          (click)="navigateToTicket(ticket.idTicket)"> <!-- Evento de clic -->
+          {{ ticket.showtimeHour.showtime.movie.title }}
+        </ion-button>
+      </div>
+
+      <ng-template #noTickets>
+        <p>No tickets available.</p>
+      </ng-template>
+    </ng-template>
+  </div>
+</ion-content>

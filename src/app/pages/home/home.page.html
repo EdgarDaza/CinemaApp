@@ -1,0 +1,18 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let movie of movies">
+        <ion-card (click)="goToMovieDetail(movie.idMovie)">
+          <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
+          <ion-card-content>
+            <ion-card-title>{{movie.title}}</ion-card-title>
+            <p>{{movie.synopsis}}</p>
+            <p><strong>Director:</strong> {{movie.director}}</p>
+            <p><strong>Género:</strong> {{movie.genre}}</p>
+            <p><strong>Clasificación:</strong> {{movie.classification.classificationName}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div__container">
+    <div class="div__container-seat-letter">A</div>
+    <div class="div__container-buttons">
+      <ion-button *ngFor="let i of [].constructor(4); let index = index" 
+                  [class]="'A' + (index + 1)" 
+                  (click)="toggleSeatSelection({ idSeat: index + 1, position: 'A' + (index + 1) })">
+        {{index + 1}}
+      </ion-button>
+    </div>
+  </div>
+
+  <div *ngFor="let row of [].constructor(3); let rowIndex = index">
+    <div class="div__container">
+      <div class="div__container-seat-letter">{{('A'.charCodeAt(0) + rowIndex + 1) | char}}</div>
+      <div class="div__container-buttons">
+        <ion-button *ngFor="let col of [].constructor(6); let colIndex = index" 
+                    [class]="getPosition(rowIndex + 1, colIndex)" 
+                    (click)="toggleSeatSelection({ idSeat: (rowIndex + 1) * 6 + colIndex - 1, position: getPosition(rowIndex + 1, colIndex) })">
+          {{colIndex + 1}}
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <ion-button (click)="goToUserData(showtimeHourId)" [disabled]="selectedSeats.length === 0">NEXT</ion-button>
+</ion-content>

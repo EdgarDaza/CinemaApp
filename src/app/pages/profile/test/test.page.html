@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button
+      (click)="navigateBack()"> 
+        <ion-icon 
+        name="arrow-back-outline"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="minimalist-container">
+    <h1>Text</h1>
+    <p>Text</p>
+    <ion-button
+    color="secondary"
+    (click)="goSelection()"> 
+      <ion-icon 
+      slot="start"
+      ></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

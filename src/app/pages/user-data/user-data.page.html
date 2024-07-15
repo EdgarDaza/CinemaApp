@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBack()"> 
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="firstName" name="firstName" placeholder="Enter first name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="lastName" name="lastName" placeholder="Enter last name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="email" type="email" name="email" placeholder="email@domain.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox [checked]="saveData" (ionChange)="onToggleSaveData($event)"></ion-checkbox>
+      <ion-label>Save Data</ion-label>
+    </ion-item>   
+  </ion-list>
+
+  <ion-button expand="block" color="secondary" (click)="goToCheckout()">
+    Checkout
+    <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-button>
+</ion-content>

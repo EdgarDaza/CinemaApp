@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    background: #0B101A;
+    font-family: 'ROBOTO';
+    align-items: center;
+    justify-content: center;
+}
+
+.container{ 
+    margin: 80px;
+    color: #cbcbcb;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h1{
+    font-size: 80px;
+    margin-bottom: 40px;
+}
+
+h3{
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+}
+
+.progress-bar{
+    width: 360px;
+    height: 12px;
+    background-color: #d1d1d1;
+    margin: auto;
+    margin-bottom: 100px;
+    opacity: .8;
+    position: relative;
+}
+
+.progress-bar::before{
+    content: "0%";
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    bottom: -18px;
+}
+
+.progress-bar::after{
+    content: "100%";
+    position: absolute;
+    right: 0;
+    font-size: 12px;
+    bottom: -18px;
+}
+
+.progress-bar span{
+    display: block;
+    width: 80%;
+    height: 12px;
+    background-color: #87b1de;
+    animation: fill 1s ease-in 1;
+}
+
+@keyframes fill{
+    from{
+        width: 0;
+    }
+    to{
+        width: 80%;
+    }
+}
+
+.imgstyle{
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.imagen{
+    width: 200px;
+    margin: 0 50px;
+}

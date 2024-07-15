@@ -1,13 +1,110 @@
 import { Routes } from '@angular/router';
+import { CheckAccessGuard } from './guards/check-access.guard';
+import { ProfilePage } from './pages/profile/profile.page';
 
 export const routes: Routes = [
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
   },
   {
+    path: 'comingsoon',
+    loadComponent: () => import('./pages/coming-soon/coming-soon.page').then(m => m.ComingsoonPage)
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile.page').then(m => m.ProfilePage)
+  },
+  {
+    path: 'my-tickets',
+    loadComponent: () => import('./pages/profile/my-tickets/my-tickets.page').then(m => m.MyTicketsPage)
+  },
+  {
+    path: 'my-credit-cards',
+    loadComponent: () => import('./pages/profile/my-credit-cards/my-credit-cards.page').then(m => m.MyCreditCardsPage)
+  },
+  {
+    path: 'about-us',
+    loadComponent: () => import('./pages/profile/about-us/about-us.page').then(m => m.AboutUsPage)
+  },
+  {
+    path: 'test',
+    loadComponent: () => import('./pages/profile/test/test.page').then(m => m.TestPage)
+  },
+  // {
+  //   path: 'profile',
+  //   loadComponent: () => import('./profile/profile.page').then(m => m.ProfilePage),
+  //   children: [
+  //     {
+  //       path: '',
+  //       loadComponent: () => import('./profile/profile.page').then(m => m.ProfilePage)
+  //     },
+  //     {
+  //       path: 'test',
+  //       loadComponent: () => import('./profile/test/test.page').then(m => m.TestPage)
+  //     },
+  //   ]
+  // },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
+  {
+    path: 'start1',
+    loadComponent: () => import('./pages/start/start1/start1.page').then( m => m.Start1Page)
+  },
+  {
+    path: 'start2',
+    loadComponent: () => import('./pages/start/start2/start2/start2.page').then( m => m.Start2Page)
+  },
+  {
+    path: 'seats/:showtimeHourId',
+    canActivate: [CheckAccessGuard],
+    loadComponent: () => import('./pages/seats/seats.page').then( m => m.SeatsPage)
+  },
+  {
+    path: 'checkout',
+    canActivate: [CheckAccessGuard],
+    loadComponent: () => import('./pages/checkout/checkout.page').then( m => m.CheckoutPage)
+  },
+  {
+    path: 'invoice',
+    canActivate: [CheckAccessGuard],
+    loadComponent: () => import('./pages/invoice/invoice.page').then( m => m.InvoicePage)
+  },
+  {
+    path: 'confirmation',
+    loadComponent: () => import('./pages/confirmation/confirmation.page').then( m => m.ConfirmationPage)
+  },
+  {
+    path: 'user-data',
+    canActivate: [CheckAccessGuard],
+    loadComponent: () => import('./pages/user-data/user-data.page').then( m => m.UserDataPage)
+  },
+  {
+    path: 'movie-detail/:id',
+    loadComponent: () => import('./pages/movie-detail/movie-detail.page').then( m => m.MovieDetailPage)
+  },
+  {
+    path: 'selection/:id',
+    canActivate: [CheckAccessGuard],
+    loadComponent: () => import('./pages/selection/selection.page').then( m => m.SelectionPage),
+  },
+  {
+    path: 'ticket/:id',
+    loadComponent: () => import('./pages/profile/my-tickets/ticket/ticket.page').then( m => m.TicketPage)
+  },
+  {
+    path: 'access-denied',
+    loadComponent: () => import('./access-denied/access-denied.page').then( m => m.AccessDeniedPage)
+  },
+
+
+
+
+  // {
+  //   path: '**',
+  //   redirectTo: '/home',
+  // },
 ];

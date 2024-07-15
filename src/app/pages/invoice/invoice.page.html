@@ -1,0 +1,21 @@
+<ion-content>
+  <div *ngIf="!(dataLoaded | async)">Loading...</div>
+  <div *ngIf="(dataLoaded | async) && data.showtimeHour">
+    <p>"Thank you for purchasing your movie ticket with us. We hope you enjoy your movie experience."</p>
+    <div class="ticket-details">
+      <h2>{{ data.showtimeHour.showtime.movie.title }}</h2>
+      <p><strong>Cinema:</strong> Federal Mall</p>
+      <p><strong>Order:</strong> {{ data.idTicket }}</p>
+      <p><strong>Seating:</strong> 
+        <span *ngFor="let seat of data.reservedSeats; let i = index">
+          {{ seat.seat.position }}<span *ngIf="i < data.reservedSeats.length - 1">, </span>
+        </span>
+      </p>
+      <img src="assets/barcode.png" alt="Barcode">
+    </div>
+  </div>
+  <ion-button expand="block" color="secondary" (click)="goToHome()">
+    Finish
+    <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-button>
+</ion-content>
