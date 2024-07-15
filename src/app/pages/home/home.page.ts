@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
   constructor(private moviesApiService: CinemaApiService, private navCtrl: NavController) { }
 
   goToMovieDetail(movieId: number) {
+    console.log(movieId);
     this.navCtrl.navigateForward(`/movie-detail/${movieId}`);
   }
 

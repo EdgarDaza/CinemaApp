@@ -46,20 +46,26 @@ export class UserDataPage implements ViewWillEnter {
   email: string = '';
   showtimeHourId: number;
   saveData: boolean = false;
+  isLoading: boolean = true; // Estado de carga
 
   constructor(
     private router: Router, 
     private storageService: StorageService, 
     private formService: FormService
-  ) 
-  {
+  ) {
     this.showtimeHourId = this.formService.getForm().showtimeHour.idShowtimeHour;
   }
 
   async ionViewWillEnter() {
+    this.isLoading = true; // Iniciar carga
+    console.log('Cargando datos de usuario...');
+  
     const savedUser = await this.storageService.get('user');
     const saveDataDecision = await this.storageService.get('saveData');
-
+  
+    console.log('Datos guardados:', savedUser);
+    console.log('Decisión de guardar datos:', saveDataDecision);
+  
     if (saveDataDecision) {
       this.saveData = saveDataDecision;
       if (this.saveData && savedUser) {
@@ -72,8 +78,11 @@ export class UserDataPage implements ViewWillEnter {
       this.lastName = '';
       this.email = '';
     }
-  }
   
+    this.isLoading = false; // Finaliza carga
+    console.log('Carga de datos completada.');
+  }
+
   async onToggleSaveData(event: any) {
     this.saveData = event.detail.checked;
     console.log('Toggle Save Data:', this.saveData);
@@ -111,7 +120,6 @@ export class UserDataPage implements ViewWillEnter {
   }
 
   navigateBack() {
-    
     console.log(this.showtimeHourId);
     if (this.showtimeHourId) {
       this.router.navigate([`/seats/${this.showtimeHourId}`]);
@@ -119,5 +127,4 @@ export class UserDataPage implements ViewWillEnter {
       this.router.navigate(['/home']);
     }
   }
-  
 }

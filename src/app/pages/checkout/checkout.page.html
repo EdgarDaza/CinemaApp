@@ -1,50 +1,36 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button
-      (click)="navigateBack()">
-        <ion-icon
-        name="arrow-back-outline"
-        ></ion-icon>
+      <ion-button (click)="navigateBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
-  <div class="checkout-container">
-    <div class="movie-info">
-      <img
-      src="assets/avengers-endgame.jpg"
-      alt="Avengers: Endgame">
-      <h2>{{movie.title}}</h2>
-      <p>Action, Sci-fi, Fantasy</p>
-      <p><ion-icon name="location-outline"></ion-icon> Federal Mall, Chiriqui</p>
-    </div>
-    <h2>Pay method</h2>
-    <div class="payment-method">
-      <ion-button
-      expand="block"
-      color="secondary">
-        <ion-icon name="card-outline" slot="start"></ion-icon>
-        ******123
+  <div *ngIf="isLoading">Cargando...</div> <!-- Mensaje de carga -->
+
+  <div *ngIf="!isLoading && movie"> <!-- Mostrar solo si no está cargando y movie está disponible -->
+    <div class="checkout-container">
+      <div class="movie-info">
+        <img src="assets/avengers-endgame.jpg" alt="Avengers: Endgame">
+        <h2>{{ movie.title }}</h2>
+        <p>Action, Sci-fi, Fantasy</p>
+        <p><ion-icon name="location-outline"></ion-icon> Federal Mall, Chiriqui</p>
+      </div>
+      <h2>Pay method</h2>
+      <div class="payment-method">
+        <ion-button expand="block" color="secondary">
+          <ion-icon name="card-outline" slot="start"></ion-icon>
+          ******123
+        </ion-button>
+      </div>
+      <ion-button expand="block" color="secondary" (click)="goToInvoice()">
+        {{ cost | currency }} | Pay
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
       </ion-button>
     </div>
-    <ion-button expand="block" color="secondary" (click)="goToInvoice()">
-      {{ cost | currency }} | Pay
-      <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
-    </ion-button>
   </div>
 </ion-content>
-
-<!-- <ion-content>
-  <div *ngIf="selectedSeats.length > 0; else noSeats">
-    <p>Selected Seats: {{ selectedSeats.join(', ') }}</p>
-    <ion-button expand="block" (click)="goToConfirmation()">Pay</ion-button>
-  </div>
-  <ng-template #noSeats>
-    <p>No seats selected.</p>
-  </ng-template>
-</ion-content> -->

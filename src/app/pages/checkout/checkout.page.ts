@@ -7,6 +7,7 @@ import { ViewWillEnter } from '@ionic/angular';
 import { CheckAccessService } from 'src/app/services/check-access.service';
 import { CurrencyPipe } from 'src/app/pipes/currency.pipe';
 import { StorageService } from 'src/app/services/storage.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-checkout',
@@ -15,7 +16,8 @@ import { StorageService } from 'src/app/services/storage.service';
   standalone: true,
   imports: [ 
     IonHeader,
-    CurrencyPipe
+    CurrencyPipe,
+    CommonModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
@@ -25,9 +27,16 @@ export class CheckoutPage implements ViewWillEnter {
   location: any;
   cost: number = 0;
   seatPrice: number = 1000;
-  movie : any;
+  movie: any;
+  isLoading: boolean = true; // Estado de carga
 
-  constructor(private router: Router, private formService: FormService, private movieApiService: CinemaApiService, private checkService:CheckAccessService, private storageService:StorageService) {
+  constructor(
+    private router: Router, 
+    private formService: FormService, 
+    private movieApiService: CinemaApiService, 
+    private checkService: CheckAccessService, 
+    private storageService: StorageService
+  ) {
     this.calculateCost();
     this.getMovie();
   }
@@ -36,17 +45,18 @@ export class CheckoutPage implements ViewWillEnter {
     this.calculateCost();
   }
 
-  async getMovie()
-  {
+  async getMovie() {
     const movieId = await this.storageService.get('movieId');
-    console.log(movieId)
+    console.log(movieId);
     if (movieId) {
       this.movieApiService.getMovie(movieId).subscribe({
         next: (data) => {
           this.movie = data;
+          this.isLoading = false; // Finaliza carga al recibir datos
         },
         error: (error) => {
           console.error('Error fetching movie details', error);
+          this.isLoading = false; // Finaliza carga en caso de error
         },
         complete: () => {
           console.log('Movie details fetch complete');
@@ -55,6 +65,7 @@ export class CheckoutPage implements ViewWillEnter {
       });
     } else {
       console.error('No movie ID found in route parameters');
+      this.isLoading = false; // Finaliza carga si no hay ID
     }
   }
 
@@ -62,7 +73,7 @@ export class CheckoutPage implements ViewWillEnter {
     const form = this.formService.getForm();
     this.cost = form.reservedSeats.length * this.seatPrice; 
     console.log(form.reservedSeats.length);
-    console.log(this.seatPrice)
+    console.log(this.seatPrice);
     console.log(form);
     console.log(this.cost);
   }
@@ -71,9 +82,6 @@ export class CheckoutPage implements ViewWillEnter {
     this.router.navigate(['/user-data']);
     this.checkService.setPreviousUrl('/user-data'); 
   }
-  
-  
-
 
   goToInvoice() {
     const form = this.formService.getForm(); // Obtén el formulario aquí

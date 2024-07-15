@@ -75,7 +75,6 @@ export class SelectionPage implements ViewWillEnter {
   ) {
     addIcons({ arrowBackOutline });
     this.movieId = this.route.snapshot.paramMap.get('id');
-    this.storageService.set('movieId', this.movieId);
   }
 
   ionViewWillEnter() {
