@@ -1,0 +1,7 @@
+{
+  "name": "cinemaapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
