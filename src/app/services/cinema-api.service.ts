@@ -16,6 +16,11 @@ export class CinemaApiService {
     return this.http.get<any[]>(`${this.apiCinemaUrl}movies`);
   }
 
+  getComingSoonMovies() : Observable<any[]>
+  {
+    return this.http.get<any[]>(`${this.apiCinemaUrl}comingsoon/movies`);
+  }
+
   getMovie(idMovie: string): Observable<any> {
     return this.http.get<any>(`${this.apiCinemaUrl}movie/${idMovie}`);
   }

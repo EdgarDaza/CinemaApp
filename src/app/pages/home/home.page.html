@@ -1,18 +1,28 @@
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4" *ngFor="let movie of movies">
-        <ion-card (click)="goToMovieDetail(movie.idMovie)">
-          <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
-          <ion-card-content>
-            <ion-card-title>{{movie.title}}</ion-card-title>
-            <p>{{movie.synopsis}}</p>
-            <p><strong>Director:</strong> {{movie.director}}</p>
-            <p><strong>Género:</strong> {{movie.genre}}</p>
-            <p><strong>Clasificación:</strong> {{movie.classification.classificationName}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <div class="container">
+      <div class="header">
+          <select id="cinema-selector">
+              <option value="Federal Mall">Federal Mall</option>
+          </select>
+      </div>
+      <div class="services">
+          <button disabled>Services</button>
+      </div>
+      <div class="movies-menu">
+        <ion-grid>
+          <ion-row>
+        <ion-col size="4" *ngFor="let movie of movies">
+          <div class="movie-item" (click)="goToMovieDetail(movie.idMovie)">
+            <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
+              <div class="label premiere">Premieres</div>
+              <div class="movie-title">{{movie.title}}</div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+      </div>
+  </div>
+
 </ion-content>

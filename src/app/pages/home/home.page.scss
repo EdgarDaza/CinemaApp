@@ -1,16 +1,117 @@
 :host {
-    display: block;
-    height: 100%;
-    background-color: #0B101A;
+  display: flex;
+  height: 100%;
+  background-color: #0B101A;
+}
+
+ion-content {
+  --background: #0B101A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 10px;
+
+  select {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      appearance: none; 
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      position: relative;
   }
-  
-  ion-content {
-    --background: #0B101A;
+
+  select::before {
+      content: "Choose cinema";
+      color: #fff;
+      position: absolute;
+      left: 15px;
   }
-  
-  .movie-image {
-    width: 50%;
-    height: 50%;
-    display: block;
+
+ 
+  select::after {
+      content: "\25BC";
+      color: #fff;
+      position: absolute;
+      right: 15px;
+      pointer-events: none; 
   }
+
+}
+
+.services {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
   
+  button {
+      background-color: #444;
+      color: #777;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: not-allowed;
+  }
+}
+
+.movies-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+
+  .movie-item {
+      position: relative;
+      margin-right: 20px;
+      text-align: center;
+      
+      img {
+          width: 150px;
+          border-radius: 10px;
+      }
+
+      .label {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 5px 10px;
+          border-radius: 5px;
+          font-size: 12px;
+      }
+
+      .premiere {
+          background-color: purple;
+      }
+
+      .today {
+          background-color: orange;
+      }
+
+      .coming-soon {
+          background-color: teal;
+      }
+
+      .movie-title {
+          color: white;
+          margin-top: 10px;
+          font-size: 14px;
+          font-weight: bold;
+      }
+  }
+}

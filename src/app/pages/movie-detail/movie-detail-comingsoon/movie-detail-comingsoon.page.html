@@ -11,14 +11,12 @@
 
           <div class="tags">
               <div class="tag">{{movie.classification.classificationName}}</div>
+              <div class="tag">{{movie.releaseDate | longDate }}</div>
               <div class="tag">{{movie.genre}}</div>
           </div>
           <div class="description">
             {{movie.synopsis}}
           </div>
-          <button class="booking-btn" (click)="goToShowtimeHours(movie.idMovie)">
-          <img src="assets\icon\Booking.png" alt="Booking">
-          </button>
       </div>
   </div>
 </ion-content>

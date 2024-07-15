@@ -10,7 +10,10 @@ import {
   IonCardContent,
   IonCardTitle,
   IonButton,
-  NavController
+  NavController,
+  IonGrid,
+  IonRow,
+  IonCol
 } from '@ionic/angular/standalone';
 import { CinemaApiService } from "../../services/cinema-api.service";
 import {ActivatedRoute} from "@angular/router";
@@ -22,7 +25,21 @@ import { LongDatePipe } from 'src/app/pipes/long-date.pipe';
   templateUrl: './movie-detail.page.html',
   styleUrls: ['./movie-detail.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonCardTitle, IonButton, LongDatePipe]
+  imports: [IonContent, 
+    IonHeader, 
+    IonTitle, 
+    IonToolbar, 
+    CommonModule, 
+    FormsModule, 
+    IonCard, 
+    IonCardContent, 
+    IonCardTitle, 
+    IonButton, 
+    LongDatePipe,
+    IonGrid,
+    IonRow,
+    IonCol
+  ]
 })
 export class MovieDetailPage implements OnInit {
   movie: any;

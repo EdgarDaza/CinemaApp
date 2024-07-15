@@ -99,6 +99,11 @@ export const routes: Routes = [
     path: 'access-denied',
     loadComponent: () => import('./access-denied/access-denied.page').then( m => m.AccessDeniedPage)
   },
+  {
+    path: 'movie-detail-comingsoon/:id',
+    loadComponent: () => import('./pages/movie-detail/movie-detail-comingsoon/movie-detail-comingsoon.page').then( m => m.MovieDetailComingsoonPage)
+  },
+
 
 
 

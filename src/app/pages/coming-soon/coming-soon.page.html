@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="coming-soon.page.scss">
-    <title>Coming Soon</title>
-</head>
-<body>
+<ion-content >
+    <div class="contenedor" >
+      <div class="selector-cine" >
+              <select>
+                <option disabled selected> choose cinema</option>
+                  <option>Federal Mall</option>
+                  <!-- Agregar más opciones si es necesario -->
+              </select>
+          </div>
+          <div class="peliculas" >
 
-     <div class="container">
-        <h1>Coming Soon</h1>
-        <h3>Site Nearly Ready</h3>
-        <div class="progress-bar"><span></span></div>
-     </div>
 
-     <div class="imgstyle">
-        <img class="imagen" src="assets/icon/imagenes/pelicula1.jpg" alt="">
-        <img class="imagen" src="assets/icon/imagenes/pelicula2.jpg" alt="">
-        <img class="imagen" src="assets/icon/imagenes/pelicula3.jpg" alt="">
-        <img class="imagen" src="assets/icon/imagenes/pelicula4.jpg" alt="">
-    </div>
+              <div class="pelicula" *ngFor="let movie of movies" (click)="goToMovieDetailComingSoon(movie.idMovie)">
+                <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
+                  <div class="info">
+                      <span class="fecha-estreno">{{movie.releaseDate | longDate}}</span>
+                      <span class="titulo">{{movie.title}}</span>
+                  </div>
+              </div>
 
-</body>
-</html>
+          </div>
+      </div>
+</ion-content>
