@@ -2,28 +2,78 @@
   ion-toolbar {
     --background: #0B101A;
     color: #F1F1F1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   ion-content {
     --background: #0B101A;
-    color: #0B101A;
+    color: #F1F1F1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 
     .minimalist-container {
-      padding-top: 130px;
+      padding-top: 100px;
       text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
       h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: #F1F1F1;
       }
+
+      h2 {
+        font-size: 2em;
+        margin: 20px 0;
+        color: #F1F1F1;
+      }
+
       p {
         font-size: 1.2em;
-        color: #666;
+        color: #A9A9A9;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        text-align: justify;
+      }
+
+      .image {
+        margin: 20px auto;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         display: flex;
-    justify-content: center;
+        justify-content: center;
+        max-width: 80%; /* Ajuste del ancho */
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      button {
+        background-color: #1C2331;
+        color: #F1F1F1;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #1F283E;
       }
     }
   }
