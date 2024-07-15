@@ -1,24 +1,28 @@
 <ion-content>
-  <div class="container">
-      <div class="image-container">
-        <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
-          <button class="trailer-btn">
-            <a [href]="movie.url" target="_blank"><img src="assets/icon/Trailer.png" alt="Trailer"></a>
-          </button>
-      </div>
-      <div class="content">
-          <h1>{{movie.title}}</h1>
+  <div class="container" *ngIf="!isLoading"> <!-- Mostrar solo si no está cargando -->
+    <div class="image-container">
+      <img *ngIf="movie" [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
+      <button class="trailer-btn">
+        <a *ngIf="movie" [href]="movie.url" target="_blank">
+          <img src="assets/icon/Trailer.png" alt="Trailer">
+        </a>
+      </button>
+    </div>
+    <div class="content">
+      <h1 *ngIf="movie">{{movie.title}}</h1>
 
-          <div class="tags">
-              <div class="tag">{{movie.classification.classificationName}}</div>
-              <div class="tag">{{movie.genre}}</div>
-          </div>
-          <div class="description">
-            {{movie.synopsis}}
-          </div>
-          <button class="booking-btn" (click)="goToShowtimeHours(movie.idMovie)">
-          <img src="assets\icon\Booking.png" alt="Booking">
-          </button>
+      <div class="tags" *ngIf="movie">
+        <div class="tag">{{movie.classification.classificationName}}</div>
+        <div class="tag">{{movie.genre}}</div>
       </div>
+      <div class="description" *ngIf="movie">
+        {{movie.synopsis}}
+      </div>
+      <button class="booking-btn" (click)="goToShowtimeHours(movie.idMovie)" *ngIf="movie">
+        <img src="assets/icon/Booking.png" alt="Booking">
+      </button>
+    </div>
   </div>
+  <div *ngIf="isLoading">Cargando...</div> <!-- Mensaje de carga -->
+  <div *ngIf="errorMessage">{{errorMessage}}</div> <!-- Mensaje de error -->
 </ion-content>

@@ -5,12 +5,14 @@
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ title }}</ion-title>
+    <ion-title *ngIf="!isLoading">{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <div *ngIf="isLoading">Cargando...</div> <!-- Mensaje de carga -->
+
+  <ion-list *ngIf="!isLoading"> <!-- Mostrar solo si no está cargando -->
     <ion-item>
       <ion-input [(ngModel)]="firstName" name="firstName" placeholder="Enter first name"></ion-input>
     </ion-item>
@@ -26,7 +28,7 @@
     </ion-item>   
   </ion-list>
 
-  <ion-button expand="block" color="secondary" (click)="goToCheckout()">
+  <ion-button expand="block" color="secondary" (click)="goToCheckout()" *ngIf="!isLoading">
     Checkout
     <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
   </ion-button>
