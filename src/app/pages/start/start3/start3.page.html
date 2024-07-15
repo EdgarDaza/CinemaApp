@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+
+  <div class="content-container">
+    <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <h1 class="title">Experiencia VIP</h1>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <div class="image">
+        <img src="assets/starts/SeatWaiterVIP.png" width=317px height=196px alt="SeatWaiterVIP">
+      </div>
+    </ion-row>
+    
+  <p class="message">
+    Disfruta tu películas con 
+asientos amplios, servicio de 
+comida hasta tu asiento, 
+    <b>y mucho más</b></p>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-button class="comenzar-button" (click)="goStart4()">
+        Continuar
+       </ion-button>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-button fill="clear" class="skip-button" (click)="goToHome()">
+        Omitir >
+       </ion-button>
+    </ion-row>
+
+  </ion-grid>
+  </div>
+ 
+</ion-content>
