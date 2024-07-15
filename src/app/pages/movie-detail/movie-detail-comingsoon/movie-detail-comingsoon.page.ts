@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,18 +6,26 @@ import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/stan
 import { CinemaApiService } from 'src/app/services/cinema-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LongDatePipe } from 'src/app/pipes/long-date.pipe';
+import { arrowBackOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-movie-detail-comingsoon',
   templateUrl: './movie-detail-comingsoon.page.html',
   styleUrls: ['./movie-detail-comingsoon.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, LongDatePipe]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, LongDatePipe],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MovieDetailComingsoonPage implements OnInit {
   movie : any;
 
-  constructor(private movieApiService : CinemaApiService, private route : ActivatedRoute) { }
+  constructor(private movieApiService : CinemaApiService, 
+              private route : ActivatedRoute,
+              private router: Router) { addIcons({ arrowBackOutline });}
+              navigateBack() {
+                this.router.navigate(['/comingsoon']);
+              }
 
   ngOnInit() {
     const movieId = this.route.snapshot.paramMap.get('id');

@@ -1,4 +1,6 @@
-<ion-content>
+
+
+<ion-content [fullscreen]="true">
   <div class="container">
       <div class="image-container">
         <img [src]="movie.image" alt="{{movie.title}}" class="movie-image" />
@@ -14,9 +16,14 @@
               <div class="tag">{{movie.genre}}</div>
           </div>
           <div class="director-tag">Director: {{movie.director}}</div>
+          <div class="duration-tag">Duración: {{movie.duration}} minutos</div>
+          
           <div class="description">
             {{movie.synopsis}}
           </div>
+
+          
+
           <button class="booking-btn" (click)="goToShowtimeHours(movie.idMovie)">
           <img src="assets\icon\Booking.png" alt="Booking">
           </button>

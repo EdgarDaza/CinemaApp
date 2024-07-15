@@ -5,7 +5,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        
+        overflow: auto;
 .container {
     display: flex;
     flex-direction: column;
@@ -71,6 +72,21 @@
             font-size: 12px;
         }
     }
+    .director-tag{
+        background-color: #1347e2;
+        padding: 5px 1px;
+        border-radius: 20px;
+        font-size: 12px;
+}
+.duration-tag {
+        background-color: #2e373b;
+        width: 100%;
+        margin-top: 5px;
+        padding: 5px 1px;
+        border-radius: 20px;
+        font-size: 12px;
+
+}
 
     .description {
         margin: 20px 0;

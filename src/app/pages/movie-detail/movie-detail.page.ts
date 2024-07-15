@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,14 +12,15 @@ import {
   IonCardTitle,
   IonButton,
   NavController,
-  IonGrid,
-  IonRow,
-  IonCol
+ 
 } from '@ionic/angular/standalone';
 import { CinemaApiService } from "../../services/cinema-api.service";
 import {ActivatedRoute} from "@angular/router";
 import { CheckAccessService } from 'src/app/services/check-access.service';
 import { LongDatePipe } from 'src/app/pipes/long-date.pipe';
+import { arrowBackOutline } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-detail',
@@ -36,22 +38,26 @@ import { LongDatePipe } from 'src/app/pipes/long-date.pipe';
     IonCardTitle, 
     IonButton, 
     LongDatePipe,
-    IonGrid,
-    IonRow,
-    IonCol
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MovieDetailPage implements OnInit {
   movie: any;
+  
 
   constructor(
     private route: ActivatedRoute,
     private movieApiService: CinemaApiService,
     private navCtrl : NavController,
-    private accessService : CheckAccessService
+    private accessService : CheckAccessService,
+    private router: Router
   ) 
-  { 
-  }
+  { addIcons({ arrowBackOutline });
+}
+
+navigateBack() {
+  this.router.navigate(['/home']);
+}
 
   goToShowtimeHours(movieId: number) {
     this.navCtrl.navigateForward(`selection/${movieId}`);
